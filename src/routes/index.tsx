@@ -299,6 +299,8 @@ function Pecas() {
     </section>
   );
 }
+
+function NewFacility() {
   return (
     <section className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border">
       <div className="max-w-7xl mx-auto">
