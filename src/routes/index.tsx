@@ -385,6 +385,7 @@ function Index() {
         <About />
         <Certifications />
         <Structure />
+        <Pecas />
         <NewFacility />
         <Contact />
       </main>
