@@ -58,7 +58,7 @@ function Hero() {
           <img src={stbLogo} alt="STB Aero" className="h-36 md:h-48 lg:h-60 w-auto drop-shadow-[0_0_40px_oklch(0.72_0.17_130/0.5)]" />
           <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono-tech text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            DESDE 1995 · VALE DO PARAÍBA
+            DESDE 1995 · BOTUCATU/SP
           </div>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.03em] leading-[0.95] text-balance">
             Usinagem de<br />
