@@ -17,18 +17,12 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Logo() {
+function Logo({ size = "sm" }: { size?: "sm" | "lg" }) {
+  const h = size === "lg" ? "h-20 md:h-28" : "h-11";
   return (
-    <div className="flex items-center gap-2.5">
-      <div className="relative h-9 w-9 rounded-sm bg-primary flex items-center justify-center">
-        <div className="absolute inset-0.5 rounded-sm border border-background/30" />
-        <span className="font-display font-bold text-primary-foreground text-sm tracking-tighter relative">STB</span>
-      </div>
-      <div className="flex flex-col leading-none">
-        <span className="font-display font-bold text-base tracking-tight">STB AERO</span>
-        <span className="font-mono-tech text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Aeronáutica</span>
-      </div>
-    </div>
+    <a href="#" className="flex items-center gap-3 group">
+      <img src={stbLogo} alt="STB Aero" className={`${h} w-auto drop-shadow-[0_0_25px_oklch(0.72_0.17_130/0.4)] transition-transform group-hover:scale-105`} />
+    </a>
   );
 }
 
