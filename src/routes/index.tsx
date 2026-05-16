@@ -252,7 +252,53 @@ function Structure() {
   );
 }
 
-function NewFacility() {
+function Pecas() {
+  const pecas = [
+    { img: peca1, code: "01", label: "Componente Estrutural", span: "md:col-span-2 md:row-span-2" },
+    { img: peca2, code: "02", label: "Carcaça Usinada", span: "" },
+    { img: peca3, code: "03", label: "Flange de Precisão", span: "" },
+    { img: peca4, code: "04", label: "Conector Aeroespacial", span: "" },
+    { img: peca5, code: "05", label: "Suporte Mecânico", span: "" },
+    { img: peca6, code: "06", label: "Bracket Estrutural", span: "md:col-span-2" },
+  ];
+  return (
+    <section id="pecas" className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+          <div className="lg:col-span-7">
+            <SectionHead kicker="// PEÇAS USINADAS" title="A complexidade faz parte do nosso dia a dia." />
+          </div>
+          <p className="lg:col-span-5 text-muted-foreground text-lg leading-relaxed">
+            Componentes de alta precisão desenvolvidos para atender às mais rigorosas exigências técnicas da indústria aeroespacial e de cadeias produtivas de alto desempenho.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
+          {pecas.map((p) => (
+            <div key={p.code} className={`group relative overflow-hidden rounded-sm border border-border bg-card hover:border-primary/60 transition-all ${p.span}`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-background" />
+              <img src={p.img} alt={p.label} loading="lazy"
+                className="relative z-10 h-full w-full object-contain p-6 transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-x-0 bottom-0 z-20 p-3 flex items-center justify-between bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="font-mono-tech text-[10px] uppercase tracking-wider text-primary">{p.code}</span>
+                <span className="font-display text-xs font-medium">{p.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 grid md:grid-cols-2 gap-8 max-w-5xl">
+          <p className="text-muted-foreground leading-relaxed">
+            Cada peça reflete a integração entre engenharia especializada, processos robustos e tecnologia de ponta — incluindo centros 5 eixos e máquinas multitarefas, capazes de executar <span className="text-foreground">geometrias complexas e tolerâncias estreitas</span> em um único fluxo produtivo.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            Nossa atuação é orientada pela eficiência operacional, redução de etapas e <span className="text-foreground">controle rigoroso da qualidade</span>, garantindo confiabilidade e repetibilidade mesmo em projetos de alta complexidade.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
   return (
     <section className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border">
       <div className="max-w-7xl mx-auto">
