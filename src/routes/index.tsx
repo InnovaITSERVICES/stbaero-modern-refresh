@@ -284,7 +284,7 @@ function Contact() {
         <div className="lg:col-span-6 space-y-3">
           <ContactRow icon={Mail} label="E-mail" value="contato@stbaero.com.br" href="mailto:contato@stbaero.com.br" />
           <ContactRow icon={Phone} label="Telefone" value="Entre em contato" href="tel:+5512000000000" />
-          <ContactRow icon={MapPin} label="Localização" value="Vale do Paraíba — SP, Brasil" />
+          <ContactRow icon={MapPin} label="Localização" value="Botucatu/SP, Brasil" />
           <a href="mailto:contato@stbaero.com.br" className="mt-6 inline-flex w-full items-center justify-between bg-primary text-primary-foreground px-6 py-5 rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)]">
             <span className="font-display font-semibold text-lg">Pedir Orçamento</span>
             <ArrowUpRight className="h-5 w-5" />
