@@ -42,6 +42,7 @@ function Nav() {
           <a href="#setores" className="hover:text-foreground transition-colors">Setores</a>
           <a href="#certificacoes" className="hover:text-foreground transition-colors">Certificações</a>
           <a href="#estrutura" className="hover:text-foreground transition-colors">Estrutura</a>
+          <a href="#pecas" className="hover:text-foreground transition-colors">Peças</a>
           <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
         </nav>
         <a href="#contato" className="hidden sm:inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-sm hover:bg-primary/90 transition-colors">
