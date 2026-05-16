@@ -48,7 +48,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-24 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-40" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-glow)" }} />
       <img src={heroImg} alt="" width={1920} height={1280}
