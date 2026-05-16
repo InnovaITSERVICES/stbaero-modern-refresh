@@ -6,6 +6,12 @@ import agroImg from "@/assets/sector-agro.jpg";
 import oilImg from "@/assets/sector-oil.jpg";
 import factoryImg from "@/assets/factory.jpg";
 import stbLogo from "@/assets/stb-logo.png";
+import peca1 from "@/assets/pecas/peca1.png";
+import peca2 from "@/assets/pecas/peca2.png";
+import peca3 from "@/assets/pecas/peca3.png";
+import peca4 from "@/assets/pecas/peca4.png";
+import peca5 from "@/assets/pecas/peca5.png";
+import peca6 from "@/assets/pecas/peca6.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
