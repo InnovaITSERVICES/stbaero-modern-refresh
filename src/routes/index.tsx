@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Logo({ size = "sm" }: { size?: "sm" | "lg" }) {
-  const h = size === "lg" ? "h-20 md:h-28" : "h-11";
+  const h = size === "lg" ? "h-20 md:h-28" : "h-16 md:h-20";
   return (
     <a href="#" className="flex items-center gap-3 group">
       <img src={stbLogo} alt="STB Aero" className={`${h} w-auto drop-shadow-[0_0_25px_oklch(0.72_0.17_130/0.4)] transition-transform group-hover:scale-105`} />
@@ -29,7 +29,7 @@ function Logo({ size = "sm" }: { size?: "sm" | "lg" }) {
 function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 md:h-24 flex items-center justify-between">
         <Logo />
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           <a href="#sobre" className="hover:text-foreground transition-colors">Quem Somos</a>
@@ -48,7 +48,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-24 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-40" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-glow)" }} />
       <img src={heroImg} alt="" width={1920} height={1280}
