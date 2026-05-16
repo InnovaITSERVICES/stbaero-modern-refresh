@@ -5,6 +5,7 @@ import aeroImg from "@/assets/sector-aero.jpg";
 import agroImg from "@/assets/sector-agro.jpg";
 import oilImg from "@/assets/sector-oil.jpg";
 import factoryImg from "@/assets/factory.jpg";
+import stbLogo from "@/assets/stb-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
