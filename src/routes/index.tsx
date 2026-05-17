@@ -4,7 +4,7 @@ import heroImg from "@/assets/hero-machining.jpg";
 import aeroImg from "@/assets/sector-aero.jpg";
 import agroImg from "@/assets/sector-agro.jpg";
 import oilImg from "@/assets/sector-oil.jpg";
-import factoryImg from "@/assets/factory.jpg";
+import factoryVideo from "@/assets/ludico.mp4";
 import stbLogo from "@/assets/stb-logo.png";
 import peca1 from "@/assets/pecas/peca1.png";
 import peca2 from "@/assets/pecas/peca2.png";
@@ -171,7 +171,7 @@ function About() {
         <div className="lg:col-span-6 relative">
           <div className="absolute -inset-4 bg-primary/10 blur-3xl rounded-full" />
           <div className="relative aspect-square rounded-sm border border-border overflow-hidden bg-card">
-            <img src={factoryImg} alt="Parque industrial STB Aero" loading="lazy" width={1600} height={1024}
+            <video src={factoryVideo} autoPlay loop muted playsInline
               className="h-full w-full object-cover" />
             <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-background via-background/80 to-transparent">
               <div className="font-mono-tech text-xs text-primary">EST. 1995</div>
