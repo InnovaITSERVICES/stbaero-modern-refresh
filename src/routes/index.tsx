@@ -86,7 +86,7 @@ function Hero() {
           <div className="grid grid-cols-3 gap-6 pt-12 max-w-lg border-t border-border">
             <Stat n="30+" label="Anos de mercado" />
             <Stat n="AS9100" label="Certificada" />
-            <Stat n="5-eixos" label="CNC de precisão" />
+            <Stat n="5-eixos" label="" />
           </div>
         </div>
       </div>
