@@ -13,6 +13,11 @@ import peca3 from "@/assets/pecas/peca3.png";
 import peca4 from "@/assets/pecas/peca4.png";
 import peca5 from "@/assets/pecas/peca5.png";
 import peca6 from "@/assets/pecas/peca6.png";
+import novaVideo from "@/assets/nova-unidade/stb.mp4";
+import nova01 from "@/assets/nova-unidade/01.png";
+import nova02 from "@/assets/nova-unidade/02.png";
+import nova03 from "@/assets/nova-unidade/03.png";
+import nova04 from "@/assets/nova-unidade/04.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,6 +49,7 @@ function Nav() {
           <a href="#certificacoes" className="hover:text-foreground transition-colors">Certificações</a>
           <a href="#estrutura" className="hover:text-foreground transition-colors">Estrutura</a>
           <a href="#pecas" className="hover:text-foreground transition-colors">Peças</a>
+          <a href="#nova-unidade" className="hover:text-foreground transition-colors">Nova Unidade</a>
           <a href="#carreiras" className="hover:text-foreground transition-colors">Trabalhe Conosco</a>
           <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
         </nav>
@@ -304,8 +310,14 @@ function Pecas() {
 }
 
 function NewFacility() {
+  const timeline = [
+    { img: nova01, label: "Estrutura metálica", caption: "Montagem da estrutura principal" },
+    { img: nova02, label: "Fechamento", caption: "Paredes e cobertura em execução" },
+    { img: nova04, label: "Interior", caption: "Concretagem do piso industrial" },
+    { img: nova03, label: "Fachada finalizada", caption: "Unidade em fase final" },
+  ];
   return (
-    <section className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border">
+    <section id="nova-unidade" className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <div className="relative rounded-sm overflow-hidden border border-primary/30 bg-card p-10 lg:p-16">
           <div className="absolute inset-0 grid-bg opacity-30" />
@@ -321,6 +333,46 @@ function NewFacility() {
             <p className="text-muted-foreground text-lg mt-6 max-w-2xl">
               Um passo estratégico para ampliar nossa capacidade produtiva, modernizar processos e fortalecer ainda mais nosso compromisso com qualidade e tecnologia.
             </p>
+          </div>
+        </div>
+
+        <div className="mt-12 relative rounded-sm overflow-hidden border border-border bg-card">
+          <video
+            src={novaVideo}
+            controls
+            playsInline
+            preload="metadata"
+            className="w-full h-auto aspect-video object-cover bg-black"
+          />
+        </div>
+
+        <div className="mt-16">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <div className="font-mono-tech text-xs text-primary mb-2">// LINHA DO TEMPO</div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.02em]">
+                A construção em imagens
+              </h3>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {timeline.map((t, i) => (
+              <figure key={i} className="group relative overflow-hidden rounded-sm border border-border bg-card">
+                <div className="absolute top-3 left-3 z-20 font-mono-tech text-[10px] uppercase tracking-wider text-primary bg-background/80 backdrop-blur px-2 py-1 rounded-sm">
+                  ETAPA 0{i + 1}
+                </div>
+                <img
+                  src={t.img}
+                  alt={t.label}
+                  loading="lazy"
+                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <figcaption className="p-4 border-t border-border">
+                  <div className="font-display font-semibold text-sm">{t.label}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{t.caption}</div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </div>
