@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Logo({ size = "sm" }: { size?: "sm" | "lg" }) {
-  const h = size === "lg" ? "h-20 md:h-28" : "h-16 md:h-20";
+  const h = size === "lg" ? "h-32 md:h-44" : "h-24 md:h-32";
   return (
     <a href="#" className="flex items-center gap-3 group">
       <img src={stbLogo} alt="STB Aero" className={`${h} w-auto drop-shadow-[0_0_25px_oklch(0.72_0.17_130/0.4)] transition-transform group-hover:scale-105`} />
@@ -64,7 +64,7 @@ function Hero() {
         className="absolute right-0 top-0 h-full w-full md:w-[65%] object-cover opacity-60 md:opacity-90 [mask-image:linear-gradient(to_right,transparent,black_30%)]" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 grid lg:grid-cols-12 gap-8 w-full">
         <div className="lg:col-span-7 space-y-8">
-          <img src={stbLogo} alt="STB Aero" className="h-36 md:h-48 lg:h-60 w-auto drop-shadow-[0_0_40px_oklch(0.72_0.17_130/0.5)]" />
+          <img src={stbLogo} alt="STB Aero" className="h-52 md:h-72 lg:h-96 w-auto drop-shadow-[0_0_40px_oklch(0.72_0.17_130/0.5)]" />
           <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono-tech text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             DESDE 1995 · BOTUCATU/SP
