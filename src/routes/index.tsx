@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, CheckCircle2, Plane, Sprout, Flame, Cog, Shield, Award, Phone, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, CheckCircle2, Plane, Sprout, Flame, Cog, Shield, Award, Phone, Mail, MapPin, Briefcase, Send } from "lucide-react";
 import heroImg from "@/assets/hero-machining.jpg";
 import aeroImg from "@/assets/sector-aero.jpg";
 import agroImg from "@/assets/sector-agro.jpg";
@@ -43,6 +44,7 @@ function Nav() {
           <a href="#certificacoes" className="hover:text-foreground transition-colors">Certificações</a>
           <a href="#estrutura" className="hover:text-foreground transition-colors">Estrutura</a>
           <a href="#pecas" className="hover:text-foreground transition-colors">Peças</a>
+          <a href="#carreiras" className="hover:text-foreground transition-colors">Trabalhe Conosco</a>
           <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
         </nav>
         <a href="#contato" className="hidden sm:inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-sm hover:bg-primary/90 transition-colors">
@@ -376,6 +378,111 @@ function Footer() {
   );
 }
 
+function Careers() {
+  const [form, setForm] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+    cargo: "",
+    experiencia: "",
+    mensagem: "",
+  });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = `Candidatura — ${form.cargo || "Vaga STB Aero"} — ${form.nome}`;
+    const body = [
+      `Nome: ${form.nome}`,
+      `E-mail: ${form.email}`,
+      `Telefone: ${form.telefone}`,
+      `Área de interesse / Cargo: ${form.cargo}`,
+      `Experiência: ${form.experiencia}`,
+      "",
+      "Mensagem:",
+      form.mensagem,
+      "",
+      "—",
+      "Enviado pelo site stbaero.com.br",
+    ].join("\n");
+    const mailto = `mailto:rh@stbaero.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    setSent(true);
+  };
+
+  const input = "w-full bg-background border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 transition-colors";
+
+  return (
+    <section id="carreiras" className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
+        <div className="lg:col-span-5 space-y-6">
+          <SectionHead kicker="// CARREIRAS" title="Faça parte do time STB Aero." />
+          <p className="text-muted-foreground text-lg max-w-xl">
+            Buscamos profissionais qualificados e apaixonados por engenharia de precisão. Se você quer crescer em uma empresa de referência nos setores aeroespacial, agrícola e de óleo & gás, envie sua candidatura.
+          </p>
+          <div className="space-y-3 pt-2">
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <Briefcase className="h-4 w-4 text-primary" />
+              <span>Ambiente técnico de alta exigência</span>
+            </div>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <Award className="h-4 w-4 text-primary" />
+              <span>Empresa certificada AS9100 e Nadcap</span>
+            </div>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <CheckCircle2 className="h-4 w-4 text-primary" />
+              <span>Oportunidades de desenvolvimento contínuo</span>
+            </div>
+          </div>
+          <a href="mailto:rh@stbaero.com.br" className="inline-flex items-center gap-2 text-sm text-primary hover:underline pt-4">
+            <Mail className="h-4 w-4" /> rh@stbaero.com.br
+          </a>
+        </div>
+
+        <form onSubmit={handleSubmit} className="lg:col-span-7 bg-card border border-border rounded-sm p-6 lg:p-10 space-y-4">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">Nome completo *</label>
+              <input required maxLength={120} value={form.nome} onChange={(e) => setForm({ ...form, nome: e.target.value })} className={input} placeholder="Seu nome" />
+            </div>
+            <div>
+              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">E-mail *</label>
+              <input required type="email" maxLength={160} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={input} placeholder="voce@email.com" />
+            </div>
+            <div>
+              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">Telefone</label>
+              <input maxLength={30} value={form.telefone} onChange={(e) => setForm({ ...form, telefone: e.target.value })} className={input} placeholder="(14) 99999-0000" />
+            </div>
+            <div>
+              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">Área / Cargo de interesse *</label>
+              <input required maxLength={120} value={form.cargo} onChange={(e) => setForm({ ...form, cargo: e.target.value })} className={input} placeholder="Ex: Operador CNC, Programador, Qualidade" />
+            </div>
+          </div>
+          <div>
+            <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">Experiência profissional</label>
+            <textarea rows={3} maxLength={1000} value={form.experiencia} onChange={(e) => setForm({ ...form, experiencia: e.target.value })} className={input} placeholder="Conte brevemente sua experiência, formação e principais competências." />
+          </div>
+          <div>
+            <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">Mensagem</label>
+            <textarea rows={3} maxLength={1000} value={form.mensagem} onChange={(e) => setForm({ ...form, mensagem: e.target.value })} className={input} placeholder="Algo a mais que gostaria de compartilhar?" />
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Ao enviar, seu cliente de e-mail será aberto com os dados preenchidos para <span className="text-primary">rh@stbaero.com.br</span>. Anexe seu currículo no e-mail antes de enviar.
+          </p>
+          <button type="submit" className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)]">
+            <Send className="h-4 w-4" />
+            {sent ? "Reabrir e-mail" : "Enviar candidatura"}
+          </button>
+          {sent && (
+            <p className="text-sm text-primary">E-mail aberto. Se nada aconteceu, envie diretamente para rh@stbaero.com.br.</p>
+          )}
+        </form>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -388,6 +495,7 @@ function Index() {
         <Structure />
         <Pecas />
         <NewFacility />
+        <Careers />
         <Contact />
       </main>
       <Footer />
