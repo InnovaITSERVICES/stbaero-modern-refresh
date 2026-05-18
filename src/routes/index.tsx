@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Logo({ size = "sm" }: { size?: "sm" | "lg" }) {
-  const h = size === "lg" ? "h-20 md:h-28" : "h-16 md:h-20";
+  const h = size === "lg" ? "h-32 md:h-44" : "h-24 md:h-32";
   return (
     <a href="#" className="flex items-center gap-3 group">
       <img src={stbLogo} alt="STB Aero" className={`${h} w-auto drop-shadow-[0_0_25px_oklch(0.72_0.17_130/0.4)] transition-transform group-hover:scale-105`} />
