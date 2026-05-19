@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Plane, Sprout, Flame, Cog, Shield, Award, Phone, Mail, MapPin, Briefcase, Send } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Plane, Sprout, Flame, Cog, Shield, Award, Phone, Mail, MapPin, Briefcase, Send, Menu, X } from "lucide-react";
 import heroImg from "@/assets/hero-machining.jpg";
 import aeroImg from "@/assets/sector-aero.jpg";
 import agroImg from "@/assets/sector-agro.jpg";
