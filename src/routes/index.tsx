@@ -267,9 +267,13 @@ function Certifications() {
             desc="Um dos mais rigorosos programas globais de acreditação para processos especiais no setor aeroespacial mundial."
           />
         </div>
-        <p className="text-muted-foreground text-lg mt-12 max-w-3xl text-balance">
+        <div className="text-muted-foreground text-lg mt-12 max-w-4xl whitespace-pre-line leading-relaxed">
+          A STB Aero possui a certificação AS9100, referência internacional em sistemas de gestão da qualidade para a indústria aeroespacial, e também é credenciada Nadcap Management, um dos mais rigorosos programas globais de acreditação para processos especiais no setor.{"\n\n"}
+          {"\n\n"}
+          O credenciamento Nadcap garante que nossos processos atendem a padrões técnicos extremamente elevados, assegurando controle, repetibilidade e conformidade em operações críticas — requisitos essenciais para fornecedores da cadeia aeroespacial mundial.{"\n\n"}
+          {"\n\n"}
           Essas certificações reforçam o compromisso da STB Aero com <span className="text-foreground">excelência, segurança e confiabilidade</span>, consolidando nossa atuação como um parceiro de alto nível para projetos de máxima exigência.
-        </p>
+        </div>
       </div>
     </section>
   );
