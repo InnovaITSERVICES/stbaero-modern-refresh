@@ -253,26 +253,47 @@ function Certifications() {
       <div className="absolute inset-0" style={{ background: "var(--gradient-glow)" }} />
       <div className="relative max-w-7xl mx-auto">
         <SectionHead kicker="// CERTIFICAÇÕES" title="Padrões técnicos extremamente elevados." />
-        <div className="grid md:grid-cols-2 gap-5 mt-16">
-          <CertCard
-            icon={Award}
-            code="AS9100"
-            title="Sistema de Gestão da Qualidade"
-            desc="Referência internacional para a indústria aeroespacial, garantindo controle, repetibilidade e conformidade em todos os processos."
-          />
-          <CertCard
-            icon={Shield}
-            code="NADCAP"
-            title="Management Accreditation"
-            desc="Um dos mais rigorosos programas globais de acreditação para processos especiais no setor aeroespacial mundial."
-          />
-        </div>
-        <div className="text-muted-foreground text-lg mt-12 max-w-4xl whitespace-pre-line leading-relaxed">
-          A STB Aero possui a certificação AS9100, referência internacional em sistemas de gestão da qualidade para a indústria aeroespacial, e também é credenciada Nadcap Management, um dos mais rigorosos programas globais de acreditação para processos especiais no setor.{"\n\n"}
-          {"\n\n"}
-          O credenciamento Nadcap garante que nossos processos atendem a padrões técnicos extremamente elevados, assegurando controle, repetibilidade e conformidade em operações críticas — requisitos essenciais para fornecedores da cadeia aeroespacial mundial.{"\n\n"}
-          {"\n\n"}
-          Essas certificações reforçam o compromisso da STB Aero com <span className="text-foreground">excelência, segurança e confiabilidade</span>, consolidando nossa atuação como um parceiro de alto nível para projetos de máxima exigência.
+
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mt-16">
+          {/* Coluna esquerda: cards */}
+          <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-28 self-start">
+            <CertCard
+              icon={Award}
+              code="AS9100"
+              title="Sistema de Gestão da Qualidade"
+              desc="Referência internacional para a indústria aeroespacial, garantindo controle, repetibilidade e conformidade em todos os processos."
+            />
+            <CertCard
+              icon={Shield}
+              code="NADCAP"
+              title="Management Accreditation"
+              desc="Um dos mais rigorosos programas globais de acreditação para processos especiais no setor aeroespacial mundial."
+            />
+          </div>
+
+          {/* Coluna direita: texto explicativo */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="relative pl-6 border-l-2 border-primary/60">
+              <div className="font-mono-tech text-xs text-primary uppercase tracking-wider mb-3">01 · AS9100 + Nadcap</div>
+              <p className="text-foreground text-lg leading-relaxed">
+                A STB Aero possui a certificação <span className="text-primary font-medium">AS9100</span>, referência internacional em sistemas de gestão da qualidade para a indústria aeroespacial, e também é credenciada <span className="text-primary font-medium">Nadcap Management</span>, um dos mais rigorosos programas globais de acreditação para processos especiais no setor.
+              </p>
+            </div>
+
+            <div className="relative pl-6 border-l-2 border-border">
+              <div className="font-mono-tech text-xs text-primary uppercase tracking-wider mb-3">02 · Processos críticos</div>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                O credenciamento Nadcap garante que nossos processos atendem a padrões técnicos extremamente elevados, assegurando <span className="text-foreground">controle, repetibilidade e conformidade</span> em operações críticas — requisitos essenciais para fornecedores da cadeia aeroespacial mundial.
+              </p>
+            </div>
+
+            <div className="relative pl-6 border-l-2 border-border">
+              <div className="font-mono-tech text-xs text-primary uppercase tracking-wider mb-3">03 · Compromisso</div>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Essas certificações reforçam o compromisso da STB Aero com <span className="text-foreground">excelência, segurança e confiabilidade</span>, consolidando nossa atuação como um parceiro de alto nível para projetos de máxima exigência.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
