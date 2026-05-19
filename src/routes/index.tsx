@@ -123,8 +123,8 @@ function Hero() {
       <div className="absolute inset-0" style={{ background: "var(--gradient-glow)" }} />
       <img src={heroImg} alt="" width={1920} height={1280}
         className="absolute right-0 top-0 h-full w-full md:w-[65%] object-cover opacity-60 md:opacity-90 [mask-image:linear-gradient(to_right,transparent,black_30%)]" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-2 md:py-4 grid lg:grid-cols-12 gap-8 w-full">
-        <div className="lg:col-span-7 space-y-5">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-0 grid lg:grid-cols-12 gap-8 w-full">
+        <div className="lg:col-span-7 space-y-4">
           <img src={stbLogo} alt="STB Aero" className="h-44 md:h-60 lg:h-80 w-auto drop-shadow-[0_0_40px_oklch(0.72_0.17_130/0.5)] -mt-6 md:-mt-10" />
           <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono-tech text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
@@ -146,7 +146,7 @@ function Hero() {
               Conheça a STB
             </a>
           </div>
-          <div className="grid grid-cols-3 gap-6 pt-12 max-w-lg border-t border-border">
+          <div className="grid grid-cols-3 gap-6 pt-6 max-w-lg border-t border-border">
             <Stat n="30+" label="Anos de mercado" />
             <Stat n="AS9100" label="Certificada" />
             <Stat n="" label="" />
