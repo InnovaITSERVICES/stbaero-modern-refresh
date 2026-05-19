@@ -126,9 +126,9 @@ function Hero() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-0 grid lg:grid-cols-12 gap-8 w-full">
         <div className="lg:col-span-7 space-y-4">
           <img src={stbLogo} alt="STB Aero" className="h-44 md:h-60 lg:h-80 w-auto drop-shadow-[0_0_40px_oklch(0.72_0.17_130/0.5)] mt-4 md:mt-2" />
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono-tech text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            DESDE 1995 · BOTUCATU/SP
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono-tech text-muted-foreground whitespace-pre-line">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse flex-shrink-0" />
+            Sistema monitorado{"\n"}por software de gestão
           </div>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.03em] leading-[0.95] text-balance">
             Usinagem de<br />
