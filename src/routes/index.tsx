@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Plane, Sprout, Flame, Cog, Shield, Award, Phone, Mail, MapPin, Briefcase, Send } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Plane, Sprout, Flame, Cog, Shield, Award, Phone, Mail, MapPin, Briefcase, Send, Menu, X } from "lucide-react";
 import heroImg from "@/assets/hero-machining.jpg";
 import aeroImg from "@/assets/sector-aero.jpg";
 import agroImg from "@/assets/sector-agro.jpg";
@@ -29,34 +29,89 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Logo({ size = "sm" }: { size?: "sm" | "lg" }) {
-  const h = size === "lg" ? "h-32 md:h-44" : "h-24 md:h-32";
+function Logo({ className = "h-24 md:h-32" }: { className?: string }) {
   return (
     <a href="#" className="flex items-center gap-3 group">
-      <img src={stbLogo} alt="STB Aero" className={`${h} w-auto drop-shadow-[0_0_25px_oklch(0.72_0.17_130/0.4)] transition-transform group-hover:scale-105`} />
+      <img src={stbLogo} alt="STB Aero" className={`${className} w-auto drop-shadow-[0_0_25px_oklch(0.72_0.17_130/0.4)] transition-transform group-hover:scale-105`} />
     </a>
   );
 }
 
+const NAV_LINKS = [
+  { href: "#sobre", label: "Quem Somos" },
+  { href: "#setores", label: "Setores" },
+  { href: "#certificacoes", label: "Certificações" },
+  { href: "#estrutura", label: "Estrutura" },
+  { href: "#pecas", label: "Peças" },
+  { href: "#nova-unidade", label: "Nova Unidade" },
+  { href: "#carreiras", label: "Trabalhe Conosco" },
+  { href: "#contato", label: "Contato" },
+];
+
 function Nav() {
+  const [open, setOpen] = useState(false);
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 md:h-24 flex items-center justify-between">
+      {/* Desktop */}
+      <div className="hidden md:flex max-w-7xl mx-auto px-6 lg:px-10 h-24 items-center justify-between">
         <Logo />
-        <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="#sobre" className="hover:text-foreground transition-colors">Quem Somos</a>
-          <a href="#setores" className="hover:text-foreground transition-colors">Setores</a>
-          <a href="#certificacoes" className="hover:text-foreground transition-colors">Certificações</a>
-          <a href="#estrutura" className="hover:text-foreground transition-colors">Estrutura</a>
-          <a href="#pecas" className="hover:text-foreground transition-colors">Peças</a>
-          <a href="#nova-unidade" className="hover:text-foreground transition-colors">Nova Unidade</a>
-          <a href="#carreiras" className="hover:text-foreground transition-colors">Trabalhe Conosco</a>
-          <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
+        <nav className="flex items-center gap-8 text-sm text-muted-foreground">
+          {NAV_LINKS.map((l) => (
+            <a key={l.href} href={l.href} className="hover:text-foreground transition-colors">{l.label}</a>
+          ))}
         </nav>
-        <a href="#contato" className="hidden sm:inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-sm hover:bg-primary/90 transition-colors">
+        <a href="#contato" className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-sm hover:bg-primary/90 transition-colors">
           Orçamento <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
       </div>
+
+      {/* Mobile */}
+      <div className="md:hidden relative px-4 h-28 flex items-center justify-center">
+        <Logo className="h-20" />
+        <button
+          type="button"
+          aria-label="Abrir menu"
+          onClick={() => setOpen(true)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-sm border border-border bg-background/80"
+        >
+          <Menu className="h-6 w-6" />
+        </button>
+      </div>
+
+      {open && (
+        <div className="md:hidden fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl">
+          <div className="flex items-center justify-between px-4 h-28">
+            <Logo className="h-20" />
+            <button
+              type="button"
+              aria-label="Fechar menu"
+              onClick={() => setOpen(false)}
+              className="p-2 rounded-sm border border-border"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          <nav className="flex flex-col gap-1 px-6 pt-4">
+            {NAV_LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="py-4 text-lg border-b border-border text-foreground hover:text-primary transition-colors"
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#contato"
+              onClick={() => setOpen(false)}
+              className="mt-6 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 font-medium rounded-sm"
+            >
+              Pedir Orçamento <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
