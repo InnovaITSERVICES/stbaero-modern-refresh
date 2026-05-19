@@ -118,14 +118,14 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-start pt-28 md:pt-32 overflow-hidden">
+    <section className="relative min-h-screen flex items-start pt-20 md:pt-24 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-40" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-glow)" }} />
       <img src={heroImg} alt="" width={1920} height={1280}
         className="absolute right-0 top-0 h-full w-full md:w-[65%] object-cover opacity-60 md:opacity-90 [mask-image:linear-gradient(to_right,transparent,black_30%)]" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-8 md:py-12 grid lg:grid-cols-12 gap-8 w-full">
-        <div className="lg:col-span-7 space-y-6">
-          <img src={stbLogo} alt="STB Aero" className="h-52 md:h-72 lg:h-96 w-auto drop-shadow-[0_0_40px_oklch(0.72_0.17_130/0.5)] -mt-4 md:-mt-8" />
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-2 md:py-4 grid lg:grid-cols-12 gap-8 w-full">
+        <div className="lg:col-span-7 space-y-5">
+          <img src={stbLogo} alt="STB Aero" className="h-44 md:h-60 lg:h-80 w-auto drop-shadow-[0_0_40px_oklch(0.72_0.17_130/0.5)] -mt-6 md:-mt-10" />
           <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono-tech text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             DESDE 1995 · BOTUCATU/SP
