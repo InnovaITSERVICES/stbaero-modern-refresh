@@ -79,7 +79,10 @@ function Nav() {
       </div>
 
       {open && (
-        <div className="md:hidden fixed inset-0 z-[60] bg-background/50 backdrop-blur-xl">
+        <div
+          className="md:hidden fixed inset-0 z-[60] backdrop-blur-xl"
+          style={{ backgroundColor: "color-mix(in oklab, var(--background) 50%, transparent)" }}
+        >
           <div className="flex items-center justify-between px-4 h-28">
             <Logo className="h-20" />
             <button
