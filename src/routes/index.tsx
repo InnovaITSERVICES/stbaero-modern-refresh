@@ -407,7 +407,7 @@ function NewFacility() {
               INAUGURAÇÃO 2026
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em] leading-[1.05] text-balance">
-              Nova unidade fabril em fase final de construção.
+              Nova unidade fabril finalizada.
             </h2>
             <p className="text-muted-foreground text-lg mt-6 max-w-2xl">
               Um passo estratégico para ampliar nossa capacidade produtiva, modernizar processos e fortalecer ainda mais nosso compromisso com qualidade e tecnologia.
