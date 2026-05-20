@@ -238,7 +238,6 @@ function About() {
               className="h-full w-full object-cover" />
             <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-background via-background/80 to-transparent">
               <div className="font-mono-tech text-xs text-primary">EST. 1995</div>
-              <div className="font-display text-2xl font-bold mt-1">Parceiro sólido<br />da cadeia aeroespacial</div>
             </div>
           </div>
         </div>
