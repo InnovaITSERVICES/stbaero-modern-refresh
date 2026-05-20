@@ -237,7 +237,7 @@ function About() {
             <video src={factoryVideo} autoPlay loop muted playsInline
               className="h-full w-full object-cover" />
             <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-background via-background/80 to-transparent">
-              <div className="font-mono-tech text-xs text-primary">EST. 1995</div>
+              <div className="font-mono-tech text-xs text-primary">MONITORAMENTO ONLINE EM TEMPO REAL</div>
             </div>
           </div>
         </div>
