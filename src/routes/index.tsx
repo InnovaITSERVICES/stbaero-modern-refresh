@@ -418,8 +418,11 @@ function NewFacility() {
         <div className="mt-12 relative rounded-sm overflow-hidden border border-border bg-card">
           <video
             src={novaVideo}
-            controls
+            autoPlay
+            loop
+            muted
             playsInline
+            controls
             preload="metadata"
             className="w-full h-auto aspect-video object-cover bg-black"
           />
