@@ -5,7 +5,8 @@ import {
   CheckCircle2,
   Plane,
   Sprout,
-  Flame,
+  Car,
+  Sparkles,
   Cog,
   Shield,
   Award,
@@ -20,7 +21,8 @@ import {
 import heroImg from "@/assets/hero-machining.jpg";
 import aeroImg from "@/assets/sector-aero.jpg";
 import agroImg from "@/assets/sector-agro.jpg";
-import oilImg from "@/assets/sector-oil.jpg";
+import autoImg from "@/assets/sector-auto.jpg";
+import projetosImg from "@/assets/sector-projetos.jpg";
 import factoryVideo from "@/assets/ludico.mp4";
 import stbLogo from "@/assets/stb-logo.png";
 import peca1 from "@/assets/pecas/peca1.png";
@@ -233,18 +235,25 @@ function Sectors() {
       code: "02",
     },
     {
-      icon: Flame,
-      title: "Óleo & Gás",
-      desc: "Soluções críticas em ambientes de alta exigência e pressão extrema.",
-      img: oilImg,
+      icon: Car,
+      title: "Indústria e Mercado Automobilístico",
+      desc: "Componentes de precisão para a indústria e o mercado automobilístico de alto desempenho.",
+      img: autoImg,
       code: "03",
+    },
+    {
+      icon: Sparkles,
+      title: "Projetos Especiais",
+      desc: "Desenvolvimento sob medida para projetos especiais com engenharia dedicada e máxima precisão.",
+      img: projetosImg,
+      code: "04",
     },
   ];
   return (
     <section id="setores" className="relative py-24 lg:py-32 px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHead kicker="// SETORES" title="Atuamos onde a precisão é inegociável." />
-        <div className="grid md:grid-cols-3 gap-5 mt-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
           {items.map((s) => (
             <div
               key={s.title}
