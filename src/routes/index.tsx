@@ -169,7 +169,7 @@ function Hero() {
           />
           <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-border rounded-full text-xs font-mono-tech text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse flex-shrink-0" />
-            Desde 1995
+            Seja Bem-vindo
           </div>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.03em] leading-[0.95] text-balance">
             Usinagem de
