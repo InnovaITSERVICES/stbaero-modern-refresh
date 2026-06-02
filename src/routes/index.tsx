@@ -765,7 +765,7 @@ function Careers() {
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Award className="h-4 w-4 text-primary" />
-              <span>Empresa certificada AS9100 e Nadcap</span>
+              <span>Empresa credenciada Nadcap</span>
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-primary" />
