@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Soluções industriais em usinagem de precisão para os setores aeroespacial, agrícola e de óleo & gás. Certificada AS9100 e Nadcap.",
+          "Soluções industriais em usinagem de precisão para os setores aeroespacial, agrícola e mercado automobilístico.",
       },
     ],
   }),
