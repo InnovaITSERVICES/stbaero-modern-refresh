@@ -369,12 +369,6 @@ function Certifications() {
           {/* Coluna esquerda: cards */}
           <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-28 self-start">
             <CertCard
-              icon={Award}
-              code="AS9100"
-              title="Sistema de Gestão da Qualidade"
-              desc="Referência internacional para a indústria aeroespacial, garantindo controle, repetibilidade e conformidade em todos os processos."
-            />
-            <CertCard
               icon={Shield}
               code="NADCAP"
               title="Management Accreditation"
