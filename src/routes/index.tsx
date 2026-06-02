@@ -380,15 +380,13 @@ function Certifications() {
           <div className="lg:col-span-7 space-y-8">
             <div className="relative pl-6 border-l-2 border-primary/60">
               <div className="font-mono-tech text-xs text-primary uppercase tracking-wider mb-3">
-                01 · AS9100 + Nadcap
+                01 · Nadcap
               </div>
               <p className="text-foreground text-lg leading-relaxed">
-                A STB Aero possui a certificação{" "}
-                <span className="text-primary font-medium">AS9100</span>, referência internacional
-                em sistemas de gestão da qualidade para a indústria aeroespacial, e também é
-                credenciada <span className="text-primary font-medium">Nadcap Management</span>, um
+                A STB Aero é credenciada{" "}
+                <span className="text-primary font-medium">Nadcap Management</span>, um
                 dos mais rigorosos programas globais de acreditação para processos especiais no
-                setor.
+                setor aeroespacial.
               </p>
             </div>
 
