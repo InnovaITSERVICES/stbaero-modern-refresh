@@ -200,7 +200,7 @@ function Hero() {
           </div>
           <div className="grid grid-cols-3 gap-6 pt-6 max-w-lg border-t border-border">
             <Stat n="30+" label="Anos de mercado" />
-            <Stat n="CERTIFICAÇÕES INTERNACIONAIS" label="Certificada" />
+            <Stat n="" label="" />
             <Stat n="" label="" />
           </div>
         </div>
