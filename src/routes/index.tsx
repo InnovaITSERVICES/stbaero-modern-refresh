@@ -770,6 +770,35 @@ function Footer() {
     <footer className="border-t border-border px-6 lg:px-10 py-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <Logo />
+        <div className="flex items-center gap-2">
+          <a
+            href="https://www.instagram.com/stbaero"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram STB Aero"
+            className="p-2.5 border border-border rounded-sm hover:border-primary/50 hover:bg-secondary transition-all"
+          >
+            <Instagram className="h-4 w-4 text-primary" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/stb-aeronautica"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn STB Aero"
+            className="p-2.5 border border-border rounded-sm hover:border-primary/50 hover:bg-secondary transition-all"
+          >
+            <Linkedin className="h-4 w-4 text-primary" />
+          </a>
+          <a
+            href="https://www.facebook.com/stbaero"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook STB Aero"
+            className="p-2.5 border border-border rounded-sm hover:border-primary/50 hover:bg-secondary transition-all"
+          >
+            <Facebook className="h-4 w-4 text-primary" />
+          </a>
+        </div>
         <div className="font-mono-tech text-xs text-muted-foreground">
           © {new Date().getFullYear()} STB AERONÁUTICA · USINAGEM DE PRECISÃO DE CLASSE MUNDIAL
         </div>
