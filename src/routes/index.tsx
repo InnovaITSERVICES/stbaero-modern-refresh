@@ -666,6 +666,33 @@ function Contact() {
             href="tel:+5512000000000"
           />
           <ContactRow icon={MapPin} label="Localização" value="Botucatu/SP, Brasil" />
+
+          <div className="pt-6">
+            <div className="font-mono-tech text-xs uppercase tracking-[0.3em] text-primary mb-3">
+              // REDES SOCIAIS
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <SocialLink
+                href="https://www.instagram.com/stbaero"
+                icon={Instagram}
+                label="Instagram"
+                handle="@stbaero"
+              />
+              <SocialLink
+                href="https://www.linkedin.com/company/stb-aeronautica"
+                icon={Linkedin}
+                label="LinkedIn"
+                handle="STB Aeronáutica"
+              />
+              <SocialLink
+                href="https://www.facebook.com/stbaero"
+                icon={Facebook}
+                label="Facebook"
+                handle="STB Aero"
+              />
+            </div>
+          </div>
+
           <a
             href="mailto:contato@stbaero.com.br"
             className="mt-6 inline-flex w-full items-center justify-between bg-primary text-primary-foreground px-6 py-5 rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)]"
