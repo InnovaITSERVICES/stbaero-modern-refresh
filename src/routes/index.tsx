@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Soluções industriais em usinagem de precisão para os setores aeroespacial, agrícola e mercado automobilístico.",
+          "Soluções industriais em usinagem de precisão para os setores aeroespacial, agrícola e de óleo & gás. Certificada AS9100 e Nadcap.",
       },
     ],
   }),
@@ -369,6 +369,12 @@ function Certifications() {
           {/* Coluna esquerda: cards */}
           <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-28 self-start">
             <CertCard
+              icon={Award}
+              code="AS9100"
+              title="Sistema de Gestão da Qualidade"
+              desc="Referência internacional para a indústria aeroespacial, garantindo controle, repetibilidade e conformidade em todos os processos."
+            />
+            <CertCard
               icon={Shield}
               code="NADCAP"
               title="Management Accreditation"
@@ -380,13 +386,15 @@ function Certifications() {
           <div className="lg:col-span-7 space-y-8">
             <div className="relative pl-6 border-l-2 border-primary/60">
               <div className="font-mono-tech text-xs text-primary uppercase tracking-wider mb-3">
-                01 · Nadcap
+                01 · AS9100 + Nadcap
               </div>
               <p className="text-foreground text-lg leading-relaxed">
-                A STB Aero é credenciada{" "}
-                <span className="text-primary font-medium">Nadcap Management</span>, um
+                A STB Aero possui a certificação{" "}
+                <span className="text-primary font-medium">AS9100</span>, referência internacional
+                em sistemas de gestão da qualidade para a indústria aeroespacial, e também é
+                credenciada <span className="text-primary font-medium">Nadcap Management</span>, um
                 dos mais rigorosos programas globais de acreditação para processos especiais no
-                setor aeroespacial.
+                setor.
               </p>
             </div>
 
@@ -765,7 +773,7 @@ function Careers() {
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Award className="h-4 w-4 text-primary" />
-              <span>Empresa credenciada Nadcap</span>
+              <span>Empresa certificada AS9100 e Nadcap</span>
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-primary" />
