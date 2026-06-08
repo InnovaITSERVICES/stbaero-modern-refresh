@@ -17,6 +17,9 @@ import {
   Send,
   Menu,
   X,
+  Instagram,
+  Linkedin,
+  Facebook,
 } from "lucide-react";
 import heroImg from "@/assets/hero-machining.jpg";
 import aeroImg from "@/assets/sector-aero.jpg";
@@ -663,6 +666,33 @@ function Contact() {
             href="tel:+5512000000000"
           />
           <ContactRow icon={MapPin} label="Localização" value="Botucatu/SP, Brasil" />
+
+          <div className="pt-6">
+            <div className="font-mono-tech text-xs uppercase tracking-[0.3em] text-primary mb-3">
+              // REDES SOCIAIS
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <SocialLink
+                href="https://www.instagram.com/stbaero"
+                icon={Instagram}
+                label="Instagram"
+                handle="@stbaero"
+              />
+              <SocialLink
+                href="https://www.linkedin.com/company/stb-aeronautica"
+                icon={Linkedin}
+                label="LinkedIn"
+                handle="STB Aeronáutica"
+              />
+              <SocialLink
+                href="https://www.facebook.com/stbaero"
+                icon={Facebook}
+                label="Facebook"
+                handle="STB Aero"
+              />
+            </div>
+          </div>
+
           <a
             href="mailto:contato@stbaero.com.br"
             className="mt-6 inline-flex w-full items-center justify-between bg-primary text-primary-foreground px-6 py-5 rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)]"
@@ -704,11 +734,71 @@ function ContactRow({
   );
 }
 
+function SocialLink({
+  href,
+  icon: Icon,
+  label,
+  handle,
+}: {
+  href: string;
+  icon: typeof Mail;
+  label: string;
+  handle: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="group flex items-center gap-3 px-4 py-3 border border-border rounded-sm bg-card hover:border-primary/50 hover:bg-secondary transition-all"
+    >
+      <Icon className="h-4 w-4 text-primary" />
+      <div className="leading-tight">
+        <div className="font-mono-tech text-[10px] uppercase tracking-wider text-muted-foreground">
+          {label}
+        </div>
+        <div className="font-display text-sm font-medium">{handle}</div>
+      </div>
+    </a>
+  );
+}
+
+
 function Footer() {
   return (
     <footer className="border-t border-border px-6 lg:px-10 py-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <Logo />
+        <div className="flex items-center gap-2">
+          <a
+            href="https://www.instagram.com/stbaero"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram STB Aero"
+            className="p-2.5 border border-border rounded-sm hover:border-primary/50 hover:bg-secondary transition-all"
+          >
+            <Instagram className="h-4 w-4 text-primary" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/stb-aeronautica"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn STB Aero"
+            className="p-2.5 border border-border rounded-sm hover:border-primary/50 hover:bg-secondary transition-all"
+          >
+            <Linkedin className="h-4 w-4 text-primary" />
+          </a>
+          <a
+            href="https://www.facebook.com/stbaero"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook STB Aero"
+            className="p-2.5 border border-border rounded-sm hover:border-primary/50 hover:bg-secondary transition-all"
+          >
+            <Facebook className="h-4 w-4 text-primary" />
+          </a>
+        </div>
         <div className="font-mono-tech text-xs text-muted-foreground">
           © {new Date().getFullYear()} STB AERONÁUTICA · USINAGEM DE PRECISÃO DE CLASSE MUNDIAL
         </div>
