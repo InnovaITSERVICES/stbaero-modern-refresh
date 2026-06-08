@@ -17,6 +17,9 @@ import {
   Send,
   Menu,
   X,
+  Instagram,
+  Linkedin,
+  Facebook,
 } from "lucide-react";
 import heroImg from "@/assets/hero-machining.jpg";
 import aeroImg from "@/assets/sector-aero.jpg";
