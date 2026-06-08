@@ -762,6 +762,8 @@ function SocialLink({
       </div>
     </a>
   );
+}
+
 
 function Footer() {
   return (
