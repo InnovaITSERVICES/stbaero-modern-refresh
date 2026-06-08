@@ -734,6 +734,35 @@ function ContactRow({
   );
 }
 
+function SocialLink({
+  href,
+  icon: Icon,
+  label,
+  handle,
+}: {
+  href: string;
+  icon: typeof Mail;
+  label: string;
+  handle: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="group flex items-center gap-3 px-4 py-3 border border-border rounded-sm bg-card hover:border-primary/50 hover:bg-secondary transition-all"
+    >
+      <Icon className="h-4 w-4 text-primary" />
+      <div className="leading-tight">
+        <div className="font-mono-tech text-[10px] uppercase tracking-wider text-muted-foreground">
+          {label}
+        </div>
+        <div className="font-display text-sm font-medium">{handle}</div>
+      </div>
+    </a>
+  );
+
 function Footer() {
   return (
     <footer className="border-t border-border px-6 lg:px-10 py-10">
