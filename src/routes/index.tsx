@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -808,40 +808,31 @@ function Footer() {
 }
 
 function Careers() {
-  const [form, setForm] = useState({
-    nome: "",
-    email: "",
-    telefone: "",
-    cargo: "",
-    experiencia: "",
-    mensagem: "",
-  });
+  const formRef = useRef<HTMLFormElement>(null);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState(false);
 
-  const updateField = (field: keyof typeof form, value: string) => {
-    setForm((current) => ({ ...current, [field]: value }));
-    setSubmitError(false);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (sending) return;
+    if (sending || !formRef.current) return;
 
     setSending(true);
     setSent(false);
     setSubmitError(false);
 
+    const formData = new FormData(formRef.current);
+    const payload = Object.fromEntries(formData.entries());
+
     try {
       const response = await fetch("/api/enviar-candidatura", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) throw new Error("Falha ao enviar candidatura");
-      setForm({ nome: "", email: "", telefone: "", cargo: "", experiencia: "", mensagem: "" });
+      formRef.current.reset();
       setSent(true);
     } catch {
       setSubmitError(true);
@@ -890,6 +881,7 @@ function Careers() {
         </div>
 
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="lg:col-span-7 bg-card border border-border rounded-sm p-6 lg:p-10 space-y-4"
         >
@@ -901,8 +893,7 @@ function Careers() {
               <input
                 required
                 maxLength={120}
-                value={form.nome}
-                onChange={(e) => updateField("nome", e.target.value)}
+                name="nome"
                 className={input}
                 placeholder="Seu nome"
               />
@@ -915,8 +906,7 @@ function Careers() {
                 required
                 type="email"
                 maxLength={160}
-                value={form.email}
-                onChange={(e) => updateField("email", e.target.value)}
+                name="email"
                 className={input}
                 placeholder="voce@email.com"
               />
@@ -927,8 +917,7 @@ function Careers() {
               </label>
               <input
                 maxLength={30}
-                value={form.telefone}
-                onChange={(e) => updateField("telefone", e.target.value)}
+                name="telefone"
                 className={input}
                 placeholder="(14) 99999-0000"
               />
@@ -940,8 +929,7 @@ function Careers() {
               <input
                 required
                 maxLength={120}
-                value={form.cargo}
-                onChange={(e) => updateField("cargo", e.target.value)}
+                name="cargo"
                 className={input}
                 placeholder="Ex: Operador CNC, Programador, Qualidade"
               />
@@ -954,8 +942,7 @@ function Careers() {
             <textarea
               rows={3}
               maxLength={1000}
-              value={form.experiencia}
-              onChange={(e) => updateField("experiencia", e.target.value)}
+              name="experiencia"
               className={input}
               placeholder="Conte brevemente sua experiência, formação e principais competências."
             />
@@ -967,8 +954,7 @@ function Careers() {
             <textarea
               rows={3}
               maxLength={1000}
-              value={form.mensagem}
-              onChange={(e) => updateField("mensagem", e.target.value)}
+              name="mensagem"
               className={input}
               placeholder="Algo a mais que gostaria de compartilhar?"
             />
