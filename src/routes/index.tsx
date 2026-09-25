@@ -92,7 +92,7 @@ function Nav() {
           ))}
         </nav>
         <a
-          href="#contato"
+          href="mailto:stb@stbaero.com.br?subject=Solicitação%20de%20orçamento"
           className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-sm hover:bg-primary/90 transition-colors"
         >
           Orçamento <ArrowUpRight className="h-3.5 w-3.5" />
