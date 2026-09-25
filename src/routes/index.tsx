@@ -856,6 +856,7 @@ function Careers() {
       setMailtoFallback(true);
     } finally {
       setSending(false);
+      setSubmitError(false);
     }
   };
 
