@@ -834,7 +834,7 @@ function Careers() {
       "—",
       "Enviado pelo site stbaero.com.br",
     ].join("\n");
-    const mailto = `mailto:rh@stbaero.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:curriculo@stbaero.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
     setSent(true);
   };
@@ -871,10 +871,10 @@ function Careers() {
             </div>
           </div>
           <a
-            href="mailto:rh@stbaero.com.br"
+            href="mailto:curriculo@stbaero.com.br"
             className="inline-flex items-center gap-2 text-sm text-primary hover:underline pt-4"
           >
-            <Mail className="h-4 w-4" /> rh@stbaero.com.br
+            <Mail className="h-4 w-4" /> curriculo@stbaero.com.br
           </a>
         </div>
 
@@ -964,7 +964,7 @@ function Careers() {
           </div>
           <p className="text-xs text-muted-foreground">
             Ao enviar, seu cliente de e-mail será aberto com os dados preenchidos para{" "}
-            <span className="text-primary">rh@stbaero.com.br</span>. Anexe seu currículo no e-mail
+            <span className="text-primary">curriculo@stbaero.com.br</span>. Anexe seu currículo no e-mail
             antes de enviar.
           </p>
           <button
@@ -976,7 +976,7 @@ function Careers() {
           </button>
           {sent && (
             <p className="text-sm text-primary">
-              E-mail aberto. Se nada aconteceu, envie diretamente para rh@stbaero.com.br.
+              E-mail aberto. Se nada aconteceu, envie diretamente para curriculo@stbaero.com.br.
             </p>
           )}
         </form>
