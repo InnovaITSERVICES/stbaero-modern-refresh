@@ -817,30 +817,37 @@ function Careers() {
     mensagem: "",
   });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const updateField = (field: keyof typeof form, value: string) => {
     setForm((current) => ({ ...current, [field]: value }));
+    setSubmitError(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Candidatura — ${form.cargo || "Vaga STB Aero"} — ${form.nome}`;
-    const body = [
-      `Nome: ${form.nome}`,
-      `E-mail: ${form.email}`,
-      `Telefone: ${form.telefone}`,
-      `Área de interesse / Cargo: ${form.cargo}`,
-      `Experiência: ${form.experiencia}`,
-      "",
-      "Mensagem:",
-      form.mensagem,
-      "",
-      "—",
-      "Enviado pelo site stbaero.com.br",
-    ].join("\n");
-    const mailto = `mailto:curriculo@stbaero.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSent(true);
+    if (sending) return;
+
+    setSending(true);
+    setSent(false);
+    setSubmitError(false);
+
+    try {
+      const response = await fetch("/api/enviar-candidatura", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) throw new Error("Falha ao enviar candidatura");
+      setForm({ nome: "", email: "", telefone: "", cargo: "", experiencia: "", mensagem: "" });
+      setSent(true);
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const input =
@@ -967,20 +974,21 @@ function Careers() {
             />
           </div>
           <p className="text-xs text-muted-foreground">
-            Ao enviar, seu cliente de e-mail será aberto com os dados preenchidos para{" "}
-            <span className="text-primary">curriculo@stbaero.com.br</span>. Anexe seu currículo no e-mail
-            antes de enviar.
+            Seus dados serão enviados com segurança para{" "}
+            <span className="text-primary">curriculo@stbaero.com.br</span>.
           </p>
           <button
             type="submit"
-            className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)]"
+            disabled={sending}
+            className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)] disabled:cursor-not-allowed disabled:opacity-70"
           >
             <Send className="h-4 w-4" />
-            {sent ? "Reabrir e-mail" : "Enviar candidatura"}
+            {sending ? "Enviando..." : "Enviar candidatura"}
           </button>
-          {sent && (
-            <p className="text-sm text-primary">
-              E-mail aberto. Se nada aconteceu, envie diretamente para curriculo@stbaero.com.br.
+          {sent && <p className="text-sm text-primary">Candidatura enviada com sucesso!</p>}
+          {submitError && (
+            <p className="text-sm text-destructive">
+              Não foi possível enviar sua candidatura. Tente novamente.
             </p>
           )}
         </form>
