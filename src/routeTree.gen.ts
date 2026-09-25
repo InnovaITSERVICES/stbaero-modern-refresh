@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiEnviarCandidaturaRouteImport } from './routes/api/enviar-candidatura'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiEnviarCandidaturaRoute = ApiEnviarCandidaturaRouteImport.update({
+  id: '/api/enviar-candidatura',
+  path: '/api/enviar-candidatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/enviar-candidatura': typeof ApiEnviarCandidaturaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/enviar-candidatura': typeof ApiEnviarCandidaturaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/enviar-candidatura': typeof ApiEnviarCandidaturaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/enviar-candidatura'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/enviar-candidatura'
+  id: '__root__' | '/' | '/api/enviar-candidatura'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiEnviarCandidaturaRoute: typeof ApiEnviarCandidaturaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/enviar-candidatura': {
+      id: '/api/enviar-candidatura'
+      path: '/api/enviar-candidatura'
+      fullPath: '/api/enviar-candidatura'
+      preLoaderRoute: typeof ApiEnviarCandidaturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiEnviarCandidaturaRoute: ApiEnviarCandidaturaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
