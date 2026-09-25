@@ -662,8 +662,8 @@ function Contact() {
           <ContactRow
             icon={Phone}
             label="Telefone"
-            value="Entre em contato"
-            href="tel:+5512000000000"
+  value="(14) 3815-2438"
+  href="tel:+551438152438"
           />
           <ContactRow icon={MapPin} label="Localização" value="Botucatu/SP, Brasil" />
 
