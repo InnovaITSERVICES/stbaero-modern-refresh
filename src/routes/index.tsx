@@ -656,14 +656,14 @@ function Contact() {
           <ContactRow
             icon={Mail}
             label="E-mail"
-            value="contato@stbaero.com.br"
-            href="mailto:contato@stbaero.com.br"
+            value="stb@stbaero.com.br"
+            href="mailto:stb@stbaero.com.br"
           />
           <ContactRow
             icon={Phone}
             label="Telefone"
-            value="Entre em contato"
-            href="tel:+5512000000000"
+  value="(14) 3815-2438"
+  href="tel:+551438152438"
           />
           <ContactRow icon={MapPin} label="Localização" value="Botucatu/SP, Brasil" />
 
@@ -673,10 +673,10 @@ function Contact() {
             </div>
             <div className="flex flex-wrap gap-3">
               <SocialLink
-                href="https://www.instagram.com/stbaero"
+                href="https://www.instagram.com/stbaeronautica"
                 icon={Instagram}
                 label="Instagram"
-                handle="@stbaero"
+                handle="@stbaeronautica"
               />
               <SocialLink
                 href="https://www.linkedin.com/company/stb-aeronautica"
@@ -685,7 +685,7 @@ function Contact() {
                 handle="STB Aeronáutica"
               />
               <SocialLink
-                href="https://www.facebook.com/stbaero"
+                href="https://www.facebook.com/stbaeronautica"
                 icon={Facebook}
                 label="Facebook"
                 handle="STB Aero"
@@ -694,7 +694,7 @@ function Contact() {
           </div>
 
           <a
-            href="mailto:contato@stbaero.com.br"
+            href="mailto:stb@stbaero.com.br"
             className="mt-6 inline-flex w-full items-center justify-between bg-primary text-primary-foreground px-6 py-5 rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)]"
           >
             <span className="font-display font-semibold text-lg">Pedir Orçamento</span>
@@ -772,7 +772,7 @@ function Footer() {
         <Logo />
         <div className="flex items-center gap-2">
           <a
-            href="https://www.instagram.com/stbaero"
+            href="https://www.instagram.com/stbaeronautica"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram STB Aero"
@@ -790,7 +790,7 @@ function Footer() {
             <Linkedin className="h-4 w-4 text-primary" />
           </a>
           <a
-            href="https://www.facebook.com/stbaero"
+            href="https://www.facebook.com/stbaeronautica"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook STB Aero"
