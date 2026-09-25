@@ -818,6 +818,10 @@ function Careers() {
   });
   const [sent, setSent] = useState(false);
 
+  const updateField = (field: keyof typeof form, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = `Candidatura — ${form.cargo || "Vaga STB Aero"} — ${form.nome}`;
@@ -891,7 +895,7 @@ function Careers() {
                 required
                 maxLength={120}
                 value={form.nome}
-                onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                onChange={(e) => updateField("nome", e.target.value)}
                 className={input}
                 placeholder="Seu nome"
               />
@@ -905,7 +909,7 @@ function Careers() {
                 type="email"
                 maxLength={160}
                 value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={(e) => updateField("email", e.target.value)}
                 className={input}
                 placeholder="voce@email.com"
               />
@@ -917,7 +921,7 @@ function Careers() {
               <input
                 maxLength={30}
                 value={form.telefone}
-                onChange={(e) => setForm({ ...form, telefone: e.target.value })}
+                onChange={(e) => updateField("telefone", e.target.value)}
                 className={input}
                 placeholder="(14) 99999-0000"
               />
@@ -930,7 +934,7 @@ function Careers() {
                 required
                 maxLength={120}
                 value={form.cargo}
-                onChange={(e) => setForm({ ...form, cargo: e.target.value })}
+                onChange={(e) => updateField("cargo", e.target.value)}
                 className={input}
                 placeholder="Ex: Operador CNC, Programador, Qualidade"
               />
@@ -944,7 +948,7 @@ function Careers() {
               rows={3}
               maxLength={1000}
               value={form.experiencia}
-              onChange={(e) => setForm({ ...form, experiencia: e.target.value })}
+              onChange={(e) => updateField("experiencia", e.target.value)}
               className={input}
               placeholder="Conte brevemente sua experiência, formação e principais competências."
             />
@@ -957,7 +961,7 @@ function Careers() {
               rows={3}
               maxLength={1000}
               value={form.mensagem}
-              onChange={(e) => setForm({ ...form, mensagem: e.target.value })}
+              onChange={(e) => updateField("mensagem", e.target.value)}
               className={input}
               placeholder="Algo a mais que gostaria de compartilhar?"
             />
