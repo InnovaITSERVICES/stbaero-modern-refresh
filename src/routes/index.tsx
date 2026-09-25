@@ -811,6 +811,7 @@ function Careers() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [mailtoFallback, setMailtoFallback] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -837,7 +838,22 @@ function Careers() {
       form.reset();
       setSent(true);
     } catch {
-      setSubmitError(true);
+      // Fallback: abre o programa de e-mail do usuário com os dados preenchidos,
+      // garantindo que a candidatura chega mesmo sem o serviço de e-mail.
+      const body = [
+        `Nome completo: ${payload["nome"] ?? ""}`,
+        `E-mail: ${payload["email"] ?? ""}`,
+        `Telefone: ${payload["telefone"] ?? ""}`,
+        `Área / Cargo de interesse: ${payload["cargo"] ?? ""}`,
+        "",
+        `Experiência profissional: ${payload["experiencia"] ?? ""}`,
+        "",
+        `Mensagem: ${payload["mensagem"] ?? ""}`,
+      ].join("\n");
+      window.location.href = `mailto:curriculo@stbaero.com.br?subject=${encodeURIComponent(
+        `[NOVA CANDIDATURA] ${payload["cargo"] ?? ""} - ${payload["nome"] ?? ""}`,
+      )}&body=${encodeURIComponent(body)}`;
+      setMailtoFallback(true);
     } finally {
       setSending(false);
     }
