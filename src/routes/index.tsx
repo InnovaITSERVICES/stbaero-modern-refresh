@@ -822,6 +822,7 @@ function Careers() {
     setSending(true);
     setSent(false);
     setSubmitError(false);
+    setMailtoFallback(false);
 
     try {
       const controller = new AbortController();
@@ -892,6 +893,7 @@ function Careers() {
           <p className="text-xs text-muted-foreground">Seus dados serão enviados com segurança para <span className="text-primary">curriculo@stbaero.com.br</span>.</p>
           <button type="submit" disabled={sending} className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)] disabled:cursor-not-allowed disabled:opacity-70"><Send className="h-4 w-4" />{sending ? "Enviando..." : "Enviar candidatura"}</button>
           {sent && <p role="status" className="text-sm text-primary">Candidatura enviada com sucesso!</p>}
+          {mailtoFallback && <p role="status" className="text-sm text-primary">Seu programa de e-mail foi aberto para concluir o envio — não esqueça de anexar o currículo.</p>}
           {submitError && <p role="alert" className="text-sm text-destructive">Não foi possível enviar sua candidatura. Tente novamente.</p>}
         </form>
       </div>
