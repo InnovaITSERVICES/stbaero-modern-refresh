@@ -808,31 +808,33 @@ function Footer() {
 }
 
 function Careers() {
-  const formRef = useRef<HTMLFormElement>(null);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (sending || !formRef.current) return;
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (sending) return;
 
+    const form = event.currentTarget;
+    const payload = Object.fromEntries(new FormData(form).entries());
     setSending(true);
     setSent(false);
     setSubmitError(false);
 
-    const formData = new FormData(formRef.current);
-    const payload = Object.fromEntries(formData.entries());
-
     try {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 15000);
       const response = await fetch("/api/enviar-candidatura", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+      window.clearTimeout(timeout);
 
       if (!response.ok) throw new Error("Falha ao enviar candidatura");
-      formRef.current.reset();
+      form.reset();
       setSent(true);
     } catch {
       setSubmitError(true);
@@ -845,142 +847,43 @@ function Careers() {
     "w-full bg-background border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 transition-colors";
 
   return (
-    <section
-      id="carreiras"
-      className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border overflow-hidden"
-    >
+    <section id="carreiras" className="relative py-24 lg:py-32 px-6 lg:px-10 border-t border-border overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5 space-y-6">
           <SectionHead kicker="// CARREIRAS" title="Faça parte do time STB Aero." />
           <p className="text-muted-foreground text-lg max-w-xl">
-            Buscamos profissionais qualificados e apaixonados por engenharia de precisão. Se você
-            quer crescer em uma empresa de referência nos setores aeroespacial, agrícola e de óleo &
-            gás, envie sua candidatura.
+            Buscamos profissionais qualificados e apaixonados por engenharia de precisão. Se você quer crescer em uma empresa de referência nos setores aeroespacial, agrícola e de óleo & gás, envie sua candidatura.
           </p>
           <div className="space-y-3 pt-2">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Briefcase className="h-4 w-4 text-primary" />
-              <span>Ambiente técnico de alta exigência</span>
-            </div>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Award className="h-4 w-4 text-primary" />
-              <span>Empresa certificada AS9100 e Nadcap</span>
-            </div>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span>Oportunidades de desenvolvimento contínuo</span>
-            </div>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground"><Briefcase className="h-4 w-4 text-primary" /><span>Ambiente técnico de alta exigência</span></div>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground"><Award className="h-4 w-4 text-primary" /><span>Empresa certificada AS9100 e Nadcap</span></div>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-primary" /><span>Oportunidades de desenvolvimento contínuo</span></div>
           </div>
-          <a
-            href="mailto:curriculo@stbaero.com.br"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline pt-4"
-          >
-            <Mail className="h-4 w-4" /> curriculo@stbaero.com.br
-          </a>
+          <a href="mailto:curriculo@stbaero.com.br" className="inline-flex items-center gap-2 text-sm text-primary hover:underline pt-4"><Mail className="h-4 w-4" /> curriculo@stbaero.com.br</a>
         </div>
 
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="lg:col-span-7 bg-card border border-border rounded-sm p-6 lg:p-10 space-y-4"
-        >
+        <form onSubmit={handleSubmit} noValidate={false} className="lg:col-span-7 bg-card border border-border rounded-sm p-6 lg:p-10 space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">
-                Nome completo *
-              </label>
-              <input
-                required
-                maxLength={120}
-                name="nome"
-                className={input}
-                placeholder="Seu nome"
-              />
-            </div>
-            <div>
-              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">
-                E-mail *
-              </label>
-              <input
-                required
-                type="email"
-                maxLength={160}
-                name="email"
-                className={input}
-                placeholder="voce@email.com"
-              />
-            </div>
-            <div>
-              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">
-                Telefone
-              </label>
-              <input
-                maxLength={30}
-                name="telefone"
-                className={input}
-                placeholder="(14) 99999-0000"
-              />
-            </div>
-            <div>
-              <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">
-                Área / Cargo de interesse *
-              </label>
-              <input
-                required
-                maxLength={120}
-                name="cargo"
-                className={input}
-                placeholder="Ex: Operador CNC, Programador, Qualidade"
-              />
-            </div>
+            <Field label="Nome completo *"><input required maxLength={120} name="nome" className={input} placeholder="Seu nome" /></Field>
+            <Field label="E-mail *"><input required type="email" maxLength={160} name="email" className={input} placeholder="voce@email.com" /></Field>
+            <Field label="Telefone"><input maxLength={30} name="telefone" className={input} placeholder="(14) 99999-0000" /></Field>
+            <Field label="Área / Cargo de interesse *"><input required maxLength={120} name="cargo" className={input} placeholder="Ex: Operador CNC, Programador, Qualidade" /></Field>
           </div>
-          <div>
-            <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">
-              Experiência profissional
-            </label>
-            <textarea
-              rows={3}
-              maxLength={1000}
-              name="experiencia"
-              className={input}
-              placeholder="Conte brevemente sua experiência, formação e principais competências."
-            />
-          </div>
-          <div>
-            <label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">
-              Mensagem
-            </label>
-            <textarea
-              rows={3}
-              maxLength={1000}
-              name="mensagem"
-              className={input}
-              placeholder="Algo a mais que gostaria de compartilhar?"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground">
-            Seus dados serão enviados com segurança para{" "}
-            <span className="text-primary">curriculo@stbaero.com.br</span>.
-          </p>
-          <button
-            type="submit"
-            disabled={sending}
-            className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)] disabled:cursor-not-allowed disabled:opacity-70"
-          >
-            <Send className="h-4 w-4" />
-            {sending ? "Enviando..." : "Enviar candidatura"}
-          </button>
-          {sent && <p className="text-sm text-primary">Candidatura enviada com sucesso!</p>}
-          {submitError && (
-            <p className="text-sm text-destructive">
-              Não foi possível enviar sua candidatura. Tente novamente.
-            </p>
-          )}
+          <Field label="Experiência profissional"><textarea rows={3} maxLength={1000} name="experiencia" className={input} placeholder="Conte brevemente sua experiência, formação e principais competências." /></Field>
+          <Field label="Mensagem"><textarea rows={3} maxLength={1000} name="mensagem" className={input} placeholder="Algo a mais que gostaria de compartilhar?" /></Field>
+          <p className="text-xs text-muted-foreground">Seus dados serão enviados com segurança para <span className="text-primary">curriculo@stbaero.com.br</span>.</p>
+          <button type="submit" disabled={sending} className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)] disabled:cursor-not-allowed disabled:opacity-70"><Send className="h-4 w-4" />{sending ? "Enviando..." : "Enviar candidatura"}</button>
+          {sent && <p role="status" className="text-sm text-primary">Candidatura enviada com sucesso!</p>}
+          {submitError && <p role="alert" className="text-sm text-destructive">Não foi possível enviar sua candidatura. Tente novamente.</p>}
         </form>
       </div>
     </section>
   );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return <div><label className="font-mono-tech text-xs uppercase tracking-wider text-muted-foreground mb-2 block">{label}</label>{children}</div>;
 }
 
 function Index() {
