@@ -813,52 +813,27 @@ function Careers() {
   const [submitError, setSubmitError] = useState(false);
   const [mailtoFallback, setMailtoFallback] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (sending) return;
-
     const form = event.currentTarget;
     const payload = Object.fromEntries(new FormData(form).entries());
-    setSending(true);
+    const body = [
+      `Nome completo: ${payload["nome"] ?? ""}`,
+      `E-mail: ${payload["email"] ?? ""}`,
+      `Telefone: ${payload["telefone"] ?? ""}`,
+      `Área / Cargo de interesse: ${payload["cargo"] ?? ""}`,
+      "",
+      `Experiência profissional: ${payload["experiencia"] ?? ""}`,
+      "",
+      `Mensagem: ${payload["mensagem"] ?? ""}`,
+    ].join("\n");
+    window.location.href = `mailto:curriculo@stbaero.com.br?subject=${encodeURIComponent(
+      `[NOVA CANDIDATURA] ${payload["cargo"] ?? ""} - ${payload["nome"] ?? ""}`,
+    )}&body=${encodeURIComponent(body)}`;
     setSent(false);
     setSubmitError(false);
-    setMailtoFallback(false);
-
-    try {
-      const controller = new AbortController();
-      const timeout = window.setTimeout(() => controller.abort(), 15000);
-      const response = await fetch("/api/enviar-candidatura", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      });
-      window.clearTimeout(timeout);
-
-      if (!response.ok) throw new Error("Falha ao enviar candidatura");
-      form.reset();
-      setSent(true);
-    } catch {
-      // Fallback: abre o programa de e-mail do usuário com os dados preenchidos,
-      // garantindo que a candidatura chega mesmo sem o serviço de e-mail.
-      const body = [
-        `Nome completo: ${payload["nome"] ?? ""}`,
-        `E-mail: ${payload["email"] ?? ""}`,
-        `Telefone: ${payload["telefone"] ?? ""}`,
-        `Área / Cargo de interesse: ${payload["cargo"] ?? ""}`,
-        "",
-        `Experiência profissional: ${payload["experiencia"] ?? ""}`,
-        "",
-        `Mensagem: ${payload["mensagem"] ?? ""}`,
-      ].join("\n");
-      window.location.href = `mailto:curriculo@stbaero.com.br?subject=${encodeURIComponent(
-        `[NOVA CANDIDATURA] ${payload["cargo"] ?? ""} - ${payload["nome"] ?? ""}`,
-      )}&body=${encodeURIComponent(body)}`;
-      setMailtoFallback(true);
-    } finally {
-      setSending(false);
-      setSubmitError(false);
-    }
+    setSending(false);
+    setMailtoFallback(true);
   };
 
   const input =
