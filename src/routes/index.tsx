@@ -47,8 +47,15 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Soluções industriais em usinagem de precisão para os setores aeroespacial, agrícola e de óleo & gás. Certificada AS9100 e Nadcap.",
+          "Soluções industriais em usinagem de precisão para os setores aeroespacial, agrícola, automobilístico e projetos especiais.",
       },
+      { property: "og:title", content: "STB Aero — Usinagem de Precisão de Classe Mundial" },
+      {
+        property: "og:description",
+        content: "Soluções industriais de alta precisão com certificações AS9100 e Nadcap.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
@@ -808,9 +815,6 @@ function Footer() {
 }
 
 function Careers() {
-  const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
   const [mailtoFallback, setMailtoFallback] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -830,9 +834,6 @@ function Careers() {
     window.location.href = `mailto:curriculo@stbaero.com.br?subject=${encodeURIComponent(
       `[NOVA CANDIDATURA] ${payload["cargo"] ?? ""} - ${payload["nome"] ?? ""}`,
     )}&body=${encodeURIComponent(body)}`;
-    setSent(false);
-    setSubmitError(false);
-    setSending(false);
     setMailtoFallback(true);
   };
 
@@ -866,10 +867,8 @@ function Careers() {
           <Field label="Experiência profissional"><textarea rows={3} maxLength={1000} name="experiencia" className={input} placeholder="Conte brevemente sua experiência, formação e principais competências." /></Field>
           <Field label="Mensagem"><textarea rows={3} maxLength={1000} name="mensagem" className={input} placeholder="Algo a mais que gostaria de compartilhar?" /></Field>
           <p className="text-xs text-muted-foreground">Seus dados serão enviados com segurança para <span className="text-primary">curriculo@stbaero.com.br</span>.</p>
-          <button type="submit" disabled={sending} className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)] disabled:cursor-not-allowed disabled:opacity-70"><Send className="h-4 w-4" />{sending ? "Enviando..." : "Enviar candidatura"}</button>
-          {sent && <p role="status" className="text-sm text-primary">Candidatura enviada com sucesso!</p>}
+          <button type="submit" className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-6 py-4 font-medium rounded-sm hover:bg-primary/90 transition-all hover:shadow-[var(--shadow-glow)]"><Send className="h-4 w-4" />Enviar candidatura</button>
           {mailtoFallback && <p role="status" className="text-sm text-primary">Seu programa de e-mail foi aberto para concluir o envio — não esqueça de anexar o currículo.</p>}
-          {submitError && <p role="alert" className="text-sm text-destructive">Não foi possível enviar sua candidatura. Tente novamente.</p>}
         </form>
       </div>
     </section>
